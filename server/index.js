@@ -31,7 +31,17 @@ wicked.get('/functionality3', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
+  conn.query(``,
+                (err,rows,fields) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        console.log('students found');
+                })
 
+
+
+  conn.end();
 })
 // -----
 
@@ -49,7 +59,19 @@ wicked.get('/functionality5', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
+  conn.query(`UPDATE Instructor
+              SET salary = salary*`+req.query.raise+` 
+              WHERE deptName = `+req.query.dept+`;`,
+                (err,rows,fields) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        console.log('salaries updated');
+                }
+            )
 
+
+  conn.end();
 })
 // -----
 
@@ -63,7 +85,7 @@ wicked.get('/functionality6', (req, res) => {
 // -----
 
 
-
+/*
 
 wicked.get('/timeDisplay', (req, res) => {
   let conn = newConnection();
@@ -124,6 +146,8 @@ wicked.get('/userDisplay', (req, res) => {
       }
   })    
 })
+
+*/
 
 wicked.use(express.urlencoded({
   extended: true

@@ -1,4 +1,5 @@
 //this is where i will initialize the database
+/*
 let deptContent = require
 import{deptContent,
     adminContent,
@@ -10,14 +11,14 @@ import{deptContent,
     enrollmentContent,
     equipmentContent,
     allotmentContent} from './populate.js';
-
+*/
 const mysql = require('mysql2');
 
 const conn = mysql.createConnection({
     host:'127.0.0.1',
     user: 'root',
     password:'',
-    database:'sys',
+    database:'serverdb',
     port: '3306'
 });
 
@@ -25,6 +26,8 @@ conn.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
   });
+
+/*  
 
 //if there are tables in place already then reset them
 conn.query(`Drop Table Allotment,CourseEquipment,Enrollment,Section,Course,Student,Instructor,AdminStaff,Classroom,Department`,
@@ -246,5 +249,5 @@ conn.query( allotmentContent
             console.log('data inserted');
     });
 
-
+*/
 conn.end();
