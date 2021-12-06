@@ -14,7 +14,7 @@ wicked.get('/functionality1', (req, res) => {
   let conn = newConnection();
   conn.connect();
   let studentlist
-  conn.query(`select * from Student where fName=req.body.fname lName =req.body.lname`, (err,rows,fields) => {
+  conn.query(`select * from Student where fName=req.body.fname lName =req.body.lname;`, (err,rows,fields) => {
     if (err)
       res.send('ERROR: ' +err)
     else {
@@ -24,7 +24,7 @@ wicked.get('/functionality1', (req, res) => {
       for (item of studentlist)
       {
           content += '<div>'
-          content += (item.fName + " : " + item.lName + " : " + item.studentAge + " : " + item.studentYear + " : " + item.studentAverage + " : " + creditsToDate + " : " + item.numberOfClasses + " : " + classroomNo + " : " + instructorNo) ;
+          content += (item.fName + " " + item.lName + " : " + item.studentAge + "years old" + " ; " + item.studentYear + " : " + item.studentAverage + " : " + creditsToDate + " : " + item.numberOfClasses + " : " + classroomNo + " : " + instructorNo) ;
           content += '</div>'
           content += '\n';
           content += '\n';
