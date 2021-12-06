@@ -21,6 +21,7 @@ WHERE e.sectionID= (
 
 --add a new student to the student relation
 INSERT INTO Student
+(fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses )
 VALUES (//allgiven);
 --note: the interface should have a selector list for calssroom number and instructor number to make sure they are valid
 
