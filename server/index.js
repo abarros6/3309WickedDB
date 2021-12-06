@@ -1,5 +1,6 @@
 //hello
 const express = require('express');
+const Connection = require('mysql2/typings/mysql/lib/Connection');
 const path = require('path');
 
 const filePath = path.join(__dirname, '/DBconnection.js')
@@ -21,8 +22,29 @@ wicked.get('/functionality1', (req, res) => {
 wicked.get('/functionality2', (req, res) => {
   let conn = newConnection();
   conn.connect();
+  conn.query(`SELECT d.deptName, a.adminNo, min(a.salary), i.instructorNo, min(i.salary) 
+  FROM Department as d Right JOIN AdminStaff as a  RIGHT JOIN Instructor as i
+  GROUP BY d.deptName;`, (err,row,fields) => {
+    if (err)
+    res.send('ERROR: ' + err)
+    else
+    {
+      userList = rows;
+      let content = '';
+      for (u of userList)
+      {
+        content += '<div>'
+        content += u.fName + ' ' + u.lName + ' : $' + u.salary + ' Department: ' + u.dept
+        content += '</div>'
+        content += '<br>'
+      }
 
+      res.send(content);
+    }
 
+  })
+
+  conn.end();
 })
 // -----
 
