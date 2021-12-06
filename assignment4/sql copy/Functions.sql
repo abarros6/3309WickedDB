@@ -15,7 +15,7 @@ FROM Enrollment e, Student s
 WHERE e.sectionID= (
     SELECT e.sectionID
     FROM Enrollment e, Section s 
-    WHERE e.studentNo=//given AND s.courseID= //given
+    WHERE e.studentNo=//given AND S.courseID= //given
     )
   And e.studentNo = s.studentNo ;
 

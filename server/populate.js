@@ -177,3 +177,14 @@ for(i=1;i<51;i++){
     allotmentContent+='('+i+','+getRndInteger(1,51)+','+'2021-09-05'+','+'11:00:00'+'),';
 }
 allotmentContent+='('+51+','+getRndInteger(1,51)+','+'2021-09-05'+','+'11:00:00'+');';
+
+export{deptContent,
+    adminContent,
+    classContent,
+    instructorContent,
+    studentContent,
+    courseContent,
+    sectionContent,
+    enrollmentContent,
+    equipmentContent,
+    allotmentContent};

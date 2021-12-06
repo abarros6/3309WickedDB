@@ -2,3 +2,6 @@ Run the command <<npm run devStart>>
 to run the express server using nodemon which allows changes to be seen without rerunning the application.
 
 To run normally use <<npm run start>>
+
+//for updating the mysql dependencies 
+npm un mysql && npm i mysql2

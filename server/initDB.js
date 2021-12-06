@@ -1,17 +1,30 @@
 //this is where i will initialize the database
+let deptContent = require
+import{deptContent,
+    adminContent,
+    classContent,
+    instructorContent,
+    studentContent,
+    courseContent,
+    sectionContent,
+    enrollmentContent,
+    equipmentContent,
+    allotmentContent} from './populate.js';
 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const conn = mysql.createConnection({
-    host:'34.134.27.235',
+    host:'127.0.0.1',
     user: 'root',
-    password:'mypassword',
-    database:'usersDB'
+    password:'',
+    database:'sys',
+    port: '3306'
 });
 
-
-
-conn.connect();
+conn.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
 
 //if there are tables in place already then reset them
 conn.query(`Drop Table Allotment,CourseEquipment,Enrollment,Section,Course,Student,Instructor,AdminStaff,Classroom,Department`,
@@ -23,10 +36,7 @@ conn.query(`Drop Table Allotment,CourseEquipment,Enrollment,Section,Course,Stude
                 }
             )
 
-
-
-
-//init all tables in the data base
+//init the tables
 conn.query(`
 CREATE TABLE Department(
     deptName varchar(255),
@@ -154,7 +164,6 @@ CREATE TABLE Allotment(
     FOREIGN KEY (classroomNo) REFERENCES Classroom(classroomNo)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
-
             ` 
             , (err,rows,fields) => {
                 if (err)
@@ -164,16 +173,78 @@ CREATE TABLE Allotment(
             })
 
 
+//populate the tables
+conn.query( deptContent
+    , (err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
 
-conn.query( ``
-            , (err,rows,fields) => {
-                if (err)
-                    console.log(err);
-                else
-                    console.log('data inserted');
-            });
-
-
+conn.query( adminContent
+    , (err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });          
+conn.query( classContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( instructorContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( studentContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( courseContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( sectionContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( enrollmentContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( equipmentContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
+conn.query( allotmentContent
+    ,(err,rows,fields) => {
+        if (err)
+            console.log(err);
+        else
+            console.log('data inserted');
+    });
 
 
 conn.end();

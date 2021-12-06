@@ -1,3 +1,4 @@
+//hello
 const express = require('express');
 const path = require('path');
 
@@ -5,10 +6,66 @@ const filePath = path.join(__dirname, '/DBconnection.js')
 //this object can be used to create new db connections 
 const newConnection = require(filePath);
 
-const app = express();
+const wicked = express();
 
-/*
-app.get('/timeDisplay', (req, res) => {
+// functionality1
+wicked.get('/functionality1', (req, res) => {
+  let conn = newConnection();
+  conn.connect();
+
+
+})
+// -----
+
+// functionality2
+wicked.get('/functionality2', (req, res) => {
+  let conn = newConnection();
+  conn.connect();
+
+
+})
+// -----
+
+// functionality3
+wicked.get('/functionality3', (req, res) => {
+  let conn = newConnection();
+  conn.connect();
+
+
+})
+// -----
+
+// functionality4
+wicked.get('/functionality4', (req, res) => {
+  let conn = newConnection();
+  conn.connect();
+
+
+})
+// -----
+
+// functionality5
+wicked.get('/functionality5', (req, res) => {
+  let conn = newConnection();
+  conn.connect();
+
+
+})
+// -----
+
+// functionality6
+wicked.get('/functionality6', (req, res) => {
+  let conn = newConnection();
+  conn.connect();
+
+
+})
+// -----
+
+
+
+
+wicked.get('/timeDisplay', (req, res) => {
   let conn = newConnection();
   conn.connect();
   let timeList;
@@ -39,7 +96,7 @@ app.get('/timeDisplay', (req, res) => {
   })    
 })
 
-app.get('/userDisplay', (req, res) => {
+wicked.get('/userDisplay', (req, res) => {
   let conn = newConnection();
   conn.connect();
   let userList;
@@ -67,42 +124,42 @@ app.get('/userDisplay', (req, res) => {
       }
   })    
 })
-*/
-app.use(express.urlencoded({
+
+wicked.use(express.urlencoded({
   extended: true
 }))
 
-app.get('/', (req, res) => {
+wicked.get('/', (req, res) => {
   res.sendFile('/frontend/index.html', { root: __dirname })
 })
 
-app.get('/page1', (req, res) => {
+wicked.get('/page1', (req, res) => {
   res.sendFile('/frontend/page1.html', { root: __dirname })
 })
 
-app.get('/page2', (req, res) => {
+wicked.get('/page2', (req, res) => {
   res.sendFile('/frontend/page2.html', { root: __dirname })
 })
 
-app.get('/page3', (req, res) => {
+wicked.get('/page3', (req, res) => {
   res.sendFile('/frontend/page3.html', { root: __dirname })
 })
 
-app.get('/page4', (req, res) => {
+wicked.get('/page4', (req, res) => {
   res.sendFile('/frontend/page4.html', { root: __dirname })
 })
 
-app.get('/page5', (req, res) => {
+wicked.get('/page5', (req, res) => {
   res.sendFile('/frontend/page5.html', { root: __dirname })
 })
 
-app.get('/page6', (req, res) => {
+wicked.get('/page6', (req, res) => {
   res.sendFile('/frontend/page6.html', { root: __dirname })
 })
 
 
 /*
-app.get('/login', (req, res) => {
+wicked.get('/login', (req, res) => {
   let userName = req.query.usr;
   let password = req.query.pwd;
 
@@ -117,7 +174,7 @@ app.get('/login', (req, res) => {
 
 })
 
-app.get('/add-user', (req,res) => {
+wicked.get('/add-user', (req,res) => {
   let conn = newConnection();
   conn.connect();
   conn.query(`insert into Users values ('${req.query.name}','${req.query.T1}','${req.query.T2}','${req.query.T3}','${req.query.T4}','${req.query.T5}','${req.query.T6}','${req.query.T7}','${req.query.T8}','${req.query.T9}','${req.query.T10}')`
@@ -128,7 +185,7 @@ app.get('/add-user', (req,res) => {
   conn.end();
 })
 
-app.get('/add-times', (req,res) => {
+wicked.get('/add-times', (req,res) => {
   let conn = newConnection();
   conn.connect();
   conn.query( `UPDATE Time SET  T1 = '${req.query.T1}', T2 = '${req.query.T2}', T3 = '${req.query.T3}', T4 = '${req.query.T4}', T5 = '${req.query.T5}', T6 = '${req.query.T6}', T7 = '${req.query.T7}', T8 = '${req.query.T8}', T9 = '${req.query.T9}', T10 = '${req.query.T10}'`
@@ -144,7 +201,7 @@ app.get('/add-times', (req,res) => {
 })
 */
 
-app.use(express.static('frontend'))
-// make the app listen to port 80 as specified in the project instructions
+wicked.use(express.static('frontend'))
+// make the wicked listen to port 80 as specified in the project instructions
 // part 6 of the development section adresses this 
-app.listen(80);
+wicked.listen(80);
