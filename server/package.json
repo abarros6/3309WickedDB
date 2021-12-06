@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "wickedDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abarros6/wickedDB.git"
+  },
+  "author": "Anthony Barros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abarros6/wickedDB/issues"
+  },
+  "homepage": "https://github.com/abarros6/wickedDB#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  }
+}

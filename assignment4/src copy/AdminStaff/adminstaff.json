@@ -1,0 +1,24 @@
+{
+    "adminstaff":[
+        {"AdminNo":1,"position":"Principal", "startDate":20190503},
+        {"AdminNo":2,"position":"Vice_Principal", "startDate":20200410},
+        {"AdminNo":3,"position":"Vice_Principal", "startDate":20180721},
+        {"AdminNo":4,"position":"Vice_Principal", "startDate":20210301},
+        {"AdminNo":5,"position":"Secretary", "startDate":20191122},
+        {"AdminNo":6,"position":"Secretary", "startDate":20181030},
+        {"AdminNo":7,"position":"Secretary", "startDate":20170224},
+        {"AdminNo":8,"position":"Secretary", "startDate":20210526},
+        {"AdminNo":9,"position":"Science_Head", "startDate":20160521},
+        {"AdminNo":10,"position":"Math_Head", "startDate":20190423},
+        {"AdminNo":11,"position":"Social_Science_Head", "startDate":20201109},
+        {"AdminNo":12,"position":"Physical_Activities_head", "startDate":20201009},
+        {"AdminNo":13,"position":"French_Head", "startDate":20200909},
+        {"AdminNo":14,"position":"English_Head", "startDate":20191109},
+        {"AdminNo":15,"position":"Custodial_Technicial", "startDate":20191009},
+        {"AdminNo":16,"position":"Custodial_Technicial", "startDate":20190909},
+        {"AdminNo":17,"position":"Custodial_Technicial", "startDate":20180422},
+        {"AdminNo":18,"position":"Custodial_Technicial", "startDate":20170321},
+        {"AdminNo":19,"position":"Custodial_Technicial", "startDate":20180220},
+        {"AdminNo":20,"position":"Custodial_Technicial", "startDate":20210825}
+    ]
+}
