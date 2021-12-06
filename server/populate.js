@@ -96,10 +96,10 @@ let studentContent = 'INSERT INTO Student (fName ,lName ,studentAge, studentYear
 for(i=1;i<51;i++){ 
     let a = getRndInteger(1,4);
     for(j=0;j<20;j++){    
-    studentContent+='('+getName()+',' +getName()+',' +(a+14)+','+a+','+getRndInteger(45,99)+ ',' + (i*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+i+','+(52-i)+ '),';
+    studentContent+='('+getName()+',' +getName()+',' +(a+14)+','+a+','+getRndInteger(45,99)+ ',' + (a*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+i+','+(52-i)+ '),';
     }
 }
-studentContent+='('+getName()+',' +getName()+',' +(a+14)+','+a+','+getRndInteger(45,99)+ ',' + (i*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+51+','+1+ ');';
+studentContent+='('+getName()+',' +getName()+',' +18+','+4+','+getRndInteger(45,99)+ ',' + (4*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+51+','+1+ ');';
 
 //populate courses range from 1-49
 let courseContent= 'INSERT INTO Course (courseName,courseClassroom ,deptName ,courseYear ,instructorNo )';
@@ -178,13 +178,13 @@ for(i=1;i<51;i++){
 }
 allotmentContent+='('+51+','+getRndInteger(1,51)+','+'2021-09-05'+','+'11:00:00'+');';
 
-export{deptContent,
-    adminContent,
-    classContent,
-    instructorContent,
-    studentContent,
-    courseContent,
-    sectionContent,
-    enrollmentContent,
-    equipmentContent,
-    allotmentContent};
+exports.deptContent = deptContent;
+exports.adminContent = adminContent;
+exports.classContent = classContent;
+exports.instructorContent = instructorContent;
+exports.studentContent = studentContent;
+exports.courseContent = courseContent;
+exports.sectionContent = sectionContent;
+exports.enrollmentContent = enrollmentContent;
+exports.equipmentContent = equipmentContent;
+exports.allotmentContent = allotmentContent;

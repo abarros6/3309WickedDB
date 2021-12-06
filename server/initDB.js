@@ -1,15 +1,16 @@
 //this is where i will initialize the database
-let deptContent = require
-import{deptContent,
-    adminContent,
-    classContent,
-    instructorContent,
-    studentContent,
-    courseContent,
-    sectionContent,
-    enrollmentContent,
-    equipmentContent,
-    allotmentContent} from './populate.js';
+const content = require("./populate");
+
+let deptContent = content.deptContent;
+let adminContent = content.adminContent;
+let classContent = content.classContent;
+let instructorContent = content.instructorContent;
+let studentContent = content.studentsContent;
+let courseContent = content.courseContent;
+let sectionContent = content.sectionContent;
+let enrollmentContent = content.enrollmentContent;
+let equipmentContent = content.equipmentContent;
+let allotmentContent = content.allotmentContent;
 
 const mysql = require('mysql2');
 
