@@ -1,4 +1,4 @@
-Assignment 4 - - Functionalities
+Assignment 4 - Functionalities
 1. Look up students by name and all related information. DONE
 2. Find the lowest salaried staff for all departments. DONE
 3. Given a student name and a course name, find other students in the same section. DONE
