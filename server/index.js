@@ -1,5 +1,6 @@
 //hello
 const express = require('express');
+const Connection = require('mysql2/typings/mysql/lib/Connection');
 const path = require('path');
 
 const filePath = path.join(__dirname, '/DBconnection.js')
@@ -12,8 +13,30 @@ const wicked = express();
 wicked.get('/functionality1', (req, res) => {
   let conn = newConnection();
   conn.connect();
+  let studentlist
+  conn.query(`select * from Student where fName=req.body.fname lName =req.body.lname`, (err,rows,fields) => {
+    if (err)
+      res.send('ERROR: ' +err)
+    else {
+      studentlist = rows
+      let content = '';
 
+      for (item of studentlist)
+      {
+          content += '<div>'
+          content += (item.fName + " : " + item.lName + " : " + item.studentAge + " : " + item.studentYear + " : " + item.studentAverage + " : " + creditsToDate + " : " + item.numberOfClasses + " : " + classroomNo + " : " + instructorNo) ;
+          content += '</div>'
+          content += '\n';
+          content += '\n';
+      }
+      content += '<br/>';
 
+      res.send(content);
+    }
+
+  })
+
+  conn.end();
 })
 // -----
 
@@ -21,8 +44,29 @@ wicked.get('/functionality1', (req, res) => {
 wicked.get('/functionality2', (req, res) => {
   let conn = newConnection();
   conn.connect();
+  conn.query(`SELECT d.deptName, a.adminNo, min(a.salary), i.instructorNo, min(i.salary) 
+  FROM Department as d Right JOIN AdminStaff as a  RIGHT JOIN Instructor as i
+  GROUP BY d.deptName;`, (err,row,fields) => {
+    if (err)
+    res.send('ERROR: ' + err)
+    else
+    {
+      userList = rows;
+      let content = '';
+      for (u of userList)
+      {
+        content += '<div>'
+        content += u.fName + ' ' + u.lName + ' : $' + u.salary + ' Department: ' + u.dept
+        content += '</div>'
+        content += '<br>'
+      }
 
+      res.send(content);
+    }
 
+  })
+
+  conn.end();
 })
 // -----
 

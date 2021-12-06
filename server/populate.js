@@ -178,13 +178,13 @@ for(i=1;i<51;i++){
 }
 allotmentContent+='('+51+','+getRndInteger(1,51)+','+'2021-09-05'+','+'11:00:00'+');';
 
-export{deptContent,
-    adminContent,
-    classContent,
-    instructorContent,
-    studentContent,
-    courseContent,
-    sectionContent,
-    enrollmentContent,
-    equipmentContent,
-    allotmentContent};
+exports.deptContent = deptContent;
+exports.adminContent = adminContent;
+exports.classContent = classContent;
+exports.instructorContent = instructorContent;
+exports.studentContent = studentContent;
+exports.courseContent = courseContent;
+exports.sectionContent = sectionContent;
+exports.enrollmentContent = enrollmentContent;
+exports.equipmentContent = equipmentContent;
+exports.allotmentContent = allotmentContent;
