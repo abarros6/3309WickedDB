@@ -1,4 +1,4 @@
-//hello
+//hi there
 const express = require('express');
 const Connection = require('mysql2/typings/mysql/lib/Connection');
 const path = require('path');
