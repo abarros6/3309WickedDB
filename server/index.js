@@ -93,11 +93,7 @@ wicked.get('/functionality3', (req, res) => {
 wicked.get('/functionality4', (req, res) => {
   let conn = newConnection();
   conn.connect();
-<<<<<<< HEAD
-  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( NULL, '${req.query.studentFName}', '${req.query.studentLName}', '${req.query.studentAge}', '${req.query.studentYear}', '${req.query.studentCredits}', '${req.query.studentClasses}',);` , (err,rows,fields) => {
-=======
-  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( ${req.query.studentFName}, ${req.query.studentLName}, ${req.query.studentAge}, ${req.query.studentYear}, ${req.query.studentCredits}, ${req.query.studentClasses},);` , (err,rows,fields) => {
->>>>>>> 4a5a8356cc8f3483161965ac3583709eae540101
+  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( '${req.query.studentFName}', '${req.query.studentLName}', '${req.query.studentAge}', '${req.query.studentYear}', '${req.query.studentCredits}', '${req.query.studentClasses}',);` , (err,rows,fields) => {
 
     if (err) { 
 
