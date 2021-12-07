@@ -44,23 +44,24 @@ wicked.get('/functionality1', (req, res) => {
 wicked.get('/functionality2', (req, res) => {
   let conn = newConnection();
   conn.connect();
-  conn.query(`SELECT d.deptName, i.instructorNo, min(i.salary) 
+  conn.query(`SELECT i.deptName, i.instructorNo, min(i.salary) as salary, i.fName, i.lName
   FROM Department as d , Instructor as i
-  GROUP BY d.deptName;`, (err,row,fields) => {
+  GROUP BY i.deptName;`, (err,rows,fields) => {
     if (err)
     res.send('ERROR: ' + err)
     else
     {
-      userList = rows;
+      let userList = rows;
       let content = '';
       for (u of userList)
       {
         content += '<div>'
-        content += u.fName + ' ' + u.lName + ' : $' + u.salary + ' Department: ' + u.dept
+        content += u.fName + ' ' + u.lName + ' : $' + u.salary + ' Department: ' + u.deptName
         content += '</div>'
         content += '<br>'
       }
-
+      content += '</div>';
+      content += `<a href= '/'>Quit</a>`;
       res.send(content);
     }
 

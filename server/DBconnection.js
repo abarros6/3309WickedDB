@@ -8,7 +8,8 @@ function newConnection()
         password:'',
         database:'wicked',
         port: '3306',
-        multipleStatements: true
+        multipleStatements: true,
+        database: 'wicked'
     });
     return conn;
 }
