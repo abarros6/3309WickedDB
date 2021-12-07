@@ -14,7 +14,7 @@ wicked.get('/functionality1', (req, res) => {
   let conn = newConnection();
   conn.connect();
   let studentlist
-  conn.query(`select * from Student where fName='${req.query.fname}' lName='${req.query.lname}';`, (err,rows,fields) => {
+  conn.query(`select * from Student where fName='${req.query.fname}' AND lName='${req.query.lname}';`, (err,rows,fields) => {
     if (err)
       res.send('ERROR: ' + err)
     else {
@@ -24,13 +24,13 @@ wicked.get('/functionality1', (req, res) => {
       for (item of studentlist)
       {
           content += '<div>'
-          content += (item.fName + " " + item.lName + " : " + item.studentAge + "years old" + " ; " + item.studentYear + " : " + item.studentAverage + "%" + " : " + creditsToDate + "credits to date. " + " : " + item.numberOfClasses + "number of classes" + " : " + "classroom " + classroomNo + " : " + "instructor" + instructorNo) ;
+          content += ("Name: " + item.fName + " " + item.lName + " Age: " + item.studentAge + " years old" + "; Year " + item.studentYear + "; Average: " + item.studentAverage + "%;" + " Credits to date: " + item.creditsToDate  + "; " + "Number of classes: " + item.numberOfClasses +  "; Classroom: " + item.classroomNo + "; Instructor number: " + item.instructorNo) ;
           content += '</div>'
           content += '\n';
           content += '\n';
       }
       content += '<br/>';
-
+      content += `<a href= '/'>Quit</a>`;
       res.send(content);
     }
 
