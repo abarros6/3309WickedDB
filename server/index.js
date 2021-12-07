@@ -122,7 +122,7 @@ wicked.get('/functionality4', (req, res) => {
       content += '<div>';
         content += '<h3>Student '+ req.query.studentFName + ' ' + req.query.studentLName + ' is now enrolled!</h3>';
       content += '</div>';
-
+      content += `<a href= '/'>Quit</a>`;
       res.send(content);
     }
   })
