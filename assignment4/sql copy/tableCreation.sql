@@ -85,7 +85,7 @@ CREATE TABLE Section(
     endTime TIME,
     PRIMARY KEY (sectionID),
     FOREIGN KEY (courseID) REFERENCES Course(courseID)
-    ON DELETE CASCADE ON UPDATE CASCADE,
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 --enrollment now references a section 
 CREATE TABLE Enrollment(

@@ -85,58 +85,58 @@ VALUES (1, 'Principal', '2019-05-03',null,10000),(2, 'Vice_Principal', '2020-04-
 
     
 //populate instructors, ranges from 1-51
-    let instructorContent = 'INSERT INTO Instructor (deptName,coursesTaught,fName,lName, salary) VALUES ';
+    let instructorContent = 'INSERT INTO Instructor (deptName,coursesTaught,fName,lName,salary) VALUES ';
     for(i=0;i<50;i++){ 
-        instructorContent+='(' + getDept() +',' + getRndInteger(1,5)+ ',' + getName()+',' +getName()+',' +getRndInteger(5000,6000)+'),';
+        instructorContent+='("' + getDept() +'",' + getRndInteger(1,5)+ ',"' + getName()+'","' +getName()+'",' +getRndInteger(5000,6000)+'),';
    }
-   instructorContent+='('+ getDept() +',' + getRndInteger(1,5)+ ',' + getName()+',' +getName()+',' +getRndInteger(5000,6000)+');';
+   instructorContent+='("'+ getDept() +'",' + getRndInteger(1,5)+ ',"' + getName()+'","' +getName()+'",' +getRndInteger(5000,6000)+');';
 
 //populate students there are 1020 randomly generated students, 20 for each instructor/classroom
 let studentContent = 'INSERT INTO Student (fName ,lName ,studentAge, studentYear ,studentAverage ,creditsToDate ,numberOfClasses ,classroomNo ,instructorNo )VALUES ';
-for(i=1;i<51;i++){ 
+for(i=1;i<52;i++){ 
     let a = getRndInteger(1,4);
     for(j=0;j<20;j++){    
-    studentContent+='('+getName()+',' +getName()+',' +(a+14)+','+a+','+getRndInteger(45,99)+ ',' + (a*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+i+','+(52-i)+ '),';
+    studentContent+='("'+getName()+'","' +getName()+'",' +(a+14)+','+a+','+getRndInteger(45,99)+ ',' + (a*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+i+','+(52-i)+ '),';
     }
 }
-studentContent+='('+getName()+',' +getName()+',' +18+','+4+','+getRndInteger(45,99)+ ',' + (4*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+51+','+1+ ');';
+studentContent+='("'+getName()+'","' +getName()+'",' +18+','+4+','+getRndInteger(45,99)+ ',' + (4*getRndInteger(5,8))+','+ getRndInteger(5,8)+','+51+','+1+ ');';
 
 //populate courses range from 1-49
-let courseContent= 'INSERT INTO Course (courseName,courseClassroom ,deptName ,courseYear ,instructorNo )';
+let courseContent= 'INSERT INTO Course (courseName,courseClassroom ,deptName ,courseYear ,instructorNo ) VALUES ';
 for (i=1;i<9;i++)
 {
-    courseContent+='('+'Math'+i+','+getRndInteger(1,51)+','+'Math'+','+((i+1)/2)+','+ getRndInteger(1,51)+'),';
+    courseContent+='("'+'Math'+i+'",'+getRndInteger(1,51)+',"'+'Math'+'",'+i+','+ getRndInteger(1,51)+'),';
 }
 for (i=1;i<9;i++)
 {
-    courseContent+='('+'Science'+i+','+getRndInteger(1,51)+','+'Science'+','+((i+1)/2)+','+ getRndInteger(1,51)+'),';
+    courseContent+='("'+'Science'+i+'",'+getRndInteger(1,51)+',"'+'Science'+'",'+i+','+ getRndInteger(1,51)+'),';
 }
 for (i=1;i<9;i++)
 {
-    courseContent+='('+'Social_Science'+i+','+getRndInteger(1,51)+','+'Social_Science'+','+((i+1)/2)+','+ getRndInteger(1,51)+'),';
+    courseContent+='("'+'Social_Science'+i+'",'+getRndInteger(1,51)+',"'+'Social_Science'+'",'+i+','+ getRndInteger(1,51)+'),';
 }
 for (i=1;i<9;i++)
 {
-    courseContent+='('+'English'+i+','+getRndInteger(1,51)+','+'English'+','+((i+1)/2)+','+ getRndInteger(1,51)+'),';
+    courseContent+='("'+'English'+i+'",'+getRndInteger(1,51)+',"'+'English'+'",'+i+','+ getRndInteger(1,51)+'),';
 }
 for (i=1;i<9;i++)
 {
-    courseContent+='('+'French'+i+','+getRndInteger(1,51)+','+'French'+','+((i+1)/2)+','+ getRndInteger(1,51)+'),';
+    courseContent+='("'+'French'+i+'",'+getRndInteger(1,51)+',"'+'French'+'",'+i+','+ getRndInteger(1,51)+'),';
 }
 for (i=1;i<9;i++)
 {
-    courseContent+='('+'Physical_Activities'+i+','+getRndInteger(1,51)+','+'Physical_Activities'+','+((i+1)/2)+','+ getRndInteger(1,51)+'),';
+    courseContent+='("'+'Physical_Activities'+i+'",'+getRndInteger(1,51)+',"'+'Physical_Activities'+'",'+i+','+ getRndInteger(1,51)+'),';
 }
-courseContent+='('+'Math'+9+','+getRndInteger(1,51)+','+'Math'+','+4+','+ getRndInteger(1,51)+');';
+courseContent+='("'+'Math'+9+'",'+getRndInteger(1,51)+',"'+'Math'+'",'+4+','+ getRndInteger(1,51)+');';
 
 //populate sections range from 1-99, 2 sections for each course and 3 for the last course
 let sectionContent= 'INSERT INTO Section (courseID,startDate,endDate,startTime,endTime) VALUES ';
 for (i=1;i<50;i++)
 {
-    sectionContent+='('+i+','+ '2021-09-05'+','+'2022-06-20'+','+ '11:00:00' +','+'13:00:00' + '),';
-    sectionContent+='('+i+','+ '2021-09-05'+','+'2022-06-20'+','+ '13:00:00' +','+'15:00:00' + '),';
+    sectionContent+='('+i+',"'+ '2021-09-05'+'","'+'2022-06-20'+'","'+ '11:00:00' +'","'+'13:00:00' + '"),';
+    sectionContent+='('+i+',"'+ '2021-09-05'+'","'+'2022-06-20'+'","'+ '13:00:00' +'","'+'15:00:00' + '"),';
 }
-sectionContent+='('+49+','+ '2021-09-05'+','+'2022-06-20'+','+ '17:00:00' +','+'19:00:00' + ');';
+sectionContent+='('+49+',"'+ '2021-09-05'+'","'+'2022-06-20'+'","'+ '17:00:00' +'","'+'19:00:00' + '");';
 
 //populate enrollments, 5 for each student, range from 1-5100
 let enrollmentContent='INSERT INTO Enrollment (studentNo,sectionID,dateEnrolled) VALUES ';
@@ -145,14 +145,14 @@ for (i=1;i<1020;i++)
     let sn=getRndInteger(1,95);
     for (j=0;j<5;j++)
     {
-    enrollmentContent+= '('+i+','+(sn+j)+','+'2021-09-05'+'),';
+    enrollmentContent+= '('+i+','+(sn+j)+',"'+'2021-09-05'+'"),';
     }
 }
-enrollmentContent+= '('+1020+','+1+','+'2021-09-05'+'),';
-enrollmentContent+= '('+1020+','+2+','+'2021-09-05'+'),';
-enrollmentContent+= '('+1020+','+3+','+'2021-09-05'+'),';
-enrollmentContent+= '('+1020+','+4+','+'2021-09-05'+'),';
-enrollmentContent+= '('+1020+','+5+','+'2021-09-05'+');';
+enrollmentContent+= '('+1020+','+1+',"'+'2021-09-05'+'"),';
+enrollmentContent+= '('+1020+','+2+',"'+'2021-09-05'+'"),';
+enrollmentContent+= '('+1020+','+3+',"'+'2021-09-05'+'"),';
+enrollmentContent+= '('+1020+','+4+',"'+'2021-09-05'+'"),';
+enrollmentContent+= '('+1020+','+5+',"'+'2021-09-05'+'");';
 
 //populate course equipment ranges from 1=501
 function getDeviceName() {
@@ -166,17 +166,17 @@ let equipmentContent= 'INSERT INTO CourseEquipment (deviceName,courseAssigned,du
 
 for (i=0;i<500;i++)
 { 
-    equipmentContent+='('+getDeviceName()+','+getRndInteger(1,49) +','+'2022-06-18'+'),';
+    equipmentContent+='("'+getDeviceName()+'",'+getRndInteger(1,49) +',"'+'2022-06-18'+'"),';
 }
-equipmentContent+='('+getDeviceName()+','+getRndInteger(1,49) +','+'2022-06-18'+');';
+equipmentContent+='("'+getDeviceName()+'",'+getRndInteger(1,49) +',"'+'2022-06-18'+'");';
 
 //populate allotment
 let allotmentContent= 'INSERT INTO Allotment(instructorNo,classroomNo,dateAssigned,timeAssigned) VALUES '; 
 for(i=1;i<51;i++){ 
 
-    allotmentContent+='('+i+','+getRndInteger(1,51)+','+'2021-09-05'+','+'11:00:00'+'),';
+    allotmentContent+='('+i+','+getRndInteger(1,51)+',"'+'2021-09-05'+'","'+'11:00:00'+'"),';
 }
-allotmentContent+='('+51+','+getRndInteger(1,51)+','+'2021-09-05'+','+'11:00:00'+');';
+allotmentContent+='('+51+','+getRndInteger(1,51)+',"'+'2021-09-05'+'","'+'11:00:00'+'");';
 
 exports.deptContent = deptContent;
 exports.adminContent = adminContent;
