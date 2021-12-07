@@ -92,6 +92,7 @@ wicked.get('/functionality3', (req, res) => {
 // functionality4
 wicked.get('/functionality4', (req, res) => {
   let conn = newConnection();
+  conn.connect();
   
   conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear , creditsToDate, numberOfClasses) VALUES ( '${req.query.studentFName}', '${req.query.studentLName}', '${req.query.studentAge}', '${req.query.studentYear}', '${req.query.studentCredits}', '${req.query.studentClasses}');` , (err,rows,fields) => {
 
