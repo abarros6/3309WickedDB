@@ -141,9 +141,9 @@ wicked.get('/functionality6', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
-  conn.query(`SELECT t.courseID, e.startTime, e.endTime
+  conn.query(`SELECT t.courseID, t.startTime, t.endTime
   FROM Enrollment e, Student s, Section t
-  WHERE s.fName = ${req.query.studentFName} AND s.lName = ${req.query.studentLName} AND s.studentNo = e.studentNo AND e.sectionID = t.sectionID;` , (err,rows,fields) => {
+  WHERE s.fName = '${req.query.studentFName}' AND s.lName = '${req.query.studentLName}' AND s.studentNo = e.studentNo AND e.sectionID = t.sectionID;` , (err,rows,fields) => {
 
     if (err) { 
 
@@ -152,7 +152,7 @@ wicked.get('/functionality6', (req, res) => {
     } else {
       let content = '<div>';
 
-      for (r in rows) {
+      for (r of rows) {
         content += '<div>';
         content += 'Course Number: ' + r.courseID + ' Start Time: ' + r.startTime + ' Start Time: ' + r.endTime;
         content += '</div>';
