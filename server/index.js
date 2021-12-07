@@ -92,8 +92,8 @@ wicked.get('/functionality3', (req, res) => {
 // functionality4
 wicked.get('/functionality4', (req, res) => {
   let conn = newConnection();
-  conn.connect();
-  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( '${req.query.studentFName}', '${req.query.studentLName}', '${req.query.studentAge}', '${req.query.studentYear}', '${req.query.studentCredits}', '${req.query.studentClasses}',);` , (err,rows,fields) => {
+  
+  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear , creditsToDate, numberOfClasses) VALUES ( '${req.query.studentFName}', '${req.query.studentLName}', '${req.query.studentAge}', '${req.query.studentYear}', '${req.query.studentCredits}', '${req.query.studentClasses}');` , (err,rows,fields) => {
 
     if (err) { 
 
@@ -104,7 +104,7 @@ wicked.get('/functionality4', (req, res) => {
       let content = '';
 
       content += '<div>';
-        content += '<h3>Student '+ rows.studentFName + ' ' + rows.studentLName + 'is now enrolled!</h3>';
+        content += '<h3>Student '+ req.query.studentFName + ' ' + req.query.studentLName + ' is now enrolled!</h3>';
       content += '</div>';
 
       res.send(content);
