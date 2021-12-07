@@ -142,10 +142,10 @@ sectionContent+='('+49+',"'+ '2021-09-05'+'","'+'2022-06-20'+'","'+ '17:00:00' +
 let enrollmentContent='INSERT INTO Enrollment (studentNo,sectionID,dateEnrolled) VALUES ';
 for (i=1;i<1020;i++)
 {   
-    let sn=getRndInteger(1,95);
+    let sn=getRndInteger(1,91);
     for (j=0;j<5;j++)
     {
-    enrollmentContent+= '('+i+','+(sn+j)+',"'+'2021-09-05'+'"),';
+    enrollmentContent+= '('+i+','+(sn+(2*j))+',"'+'2021-09-05'+'"),';
     }
 }
 enrollmentContent+= '('+1020+','+1+',"'+'2021-09-05'+'"),';
