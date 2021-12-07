@@ -4,9 +4,9 @@ FROM Student
 WHERE fName=//given AND lName= //given;
 
 --find the lowest salaried staff from each department
-SELECT d.deptName, a.adminNo, min(a.salary), i.instructorNo, min(i.salary) 
-FROM Department as d Right JOIN AdminStaff as a  RIGHT JOIN Instructor as i
-GROUP BY d.deptName;
+SELECT i.deptName, i.instructorNo, min(i.salary) as salary, i.fName, i.lName
+FROM Department as d , Instructor as i
+GROUP BY i.deptName;
 
 --given a student and a course find all students in the same section of that course with them
 SELECT s.fName, s.lName 
@@ -27,7 +27,7 @@ VALUES (//allgiven);
 
 --increase the slaries of all instructors by a selected percest
 UPDATE Instructor
-SET salary = salary* //given%
+SET salary = salary*1. //given%
 WHERE deptName = given;
 
 --look up a student name and find all the courses they are taking
