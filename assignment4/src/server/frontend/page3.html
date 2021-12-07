@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>WickedDB</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Find Students in section given name and course</h1>
+
+        <h4>Query Description</h4>     
+
+        <p>
+            Enter the StudentNO and CourseID to find other students in the same section. <br> Click the search button to execute the query.
+        </p>
+    
+        <div classname = 'StudentsInCourseTable'>
+            <form action = '/Functionality3' method='get'> 
+                Student Number : <input name = 'studentnum' type = 'text'/>
+                <br/> 
+                Course ID : <input name = 'courseID' type = 'text'/>
+                <br/>
+                <input type = 'submit' value = 'Search'/>
+            </form>
+        </div>
+
+    <hr>
+
+    <a href= '/'>Quit</a>
+
+    </body>
+</html>

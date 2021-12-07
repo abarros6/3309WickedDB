@@ -1,0 +1,10 @@
+#container {
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-template-columns: 180px 180px;
+}
+
+.item {
+  display: grid;
+  border: 1px solid #ccc;
+}

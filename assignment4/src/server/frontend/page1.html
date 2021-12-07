@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WickedDB</title>
+</head>
+<body>
+    <h1>Student Info</h1>
+
+    <h4>Query Description</h4>
+
+    <p>
+        Enter a student's first name and last name to look up students by name and return all related information: <br> (name, age, year, average, credits to date, number of classes, home classroom, and intructor number)
+    </p>
+
+    <div classname = 'StudentsWithASpecificName'>
+        <form action = '/Functionality1' method='get'> 
+            Student First Name : <input name = 'fname' type = 'text'/>
+            Student Last Name : <input name = 'lname' type = 'text'/>
+            <input type = 'submit' value = 'Search'/>
+        </form>
+    </div>
+
+    <hr>
+
+    <a href= '/'>Quit</a>
+</body>
+</html>

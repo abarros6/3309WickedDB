@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WickedDB</title>
+</head>
+<body>
+    <h1>Edit Salary By Department</h1>
+
+    <h4>Query Description</h4>
+
+    <p>
+        In order to increase the salaries of all members of a given department, select the department from the dropdown menu<br>then enter an integer value (interpreted as a percentage). Click the edit button to execute the query and update the related tables.
+    </p>
+
+    <form action="/functionality5">
+    <p>Enter a percentage that you would increase a department by:</p>
+    <select name="dept" id='dept'>
+        <option>Math</option>
+        <option>Science</option>
+        <option>Social Science</option>
+        <option>English</option>
+        <option>French</option>
+        <option>Physical Activity</option>
+    </select>
+    <input type='text' name = 'raise'>
+    <button >Edit</button>
+    </form>
+
+    <hr>
+
+    <a href= '/'>Quit</a>
+</body>
+</html>
