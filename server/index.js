@@ -14,7 +14,7 @@ wicked.get('/functionality1', (req, res) => {
   let conn = newConnection();
   conn.connect();
   let studentlist
-  conn.query(`select * from Student where fName=${req.query.fname} lName=${req.query.lname};`, (err,rows,fields) => {
+  conn.query(`select * from Student where fName='${req.query.fname}' lName='${req.query.lname}';`, (err,rows,fields) => {
     if (err)
       res.send('ERROR: ' +err)
     else {
@@ -93,7 +93,7 @@ wicked.get('/functionality3', (req, res) => {
 wicked.get('/functionality4', (req, res) => {
   let conn = newConnection();
   conn.connect();
-  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( NULL, ${req.query.studentFName}, ${req.query.studentLName}, ${req.query.studentAge}, ${req.query.studentYear}, ${req.query.studentCredits}, ${req.query.studentClasses},);` , (err,rows,fields) => {
+  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( NULL, '${req.query.studentFName}', '${req.query.studentLName}', '${req.query.studentAge}', '${req.query.studentYear}', '${req.query.studentCredits}', '${req.query.studentClasses}',);` , (err,rows,fields) => {
 
     if (err) { 
 
