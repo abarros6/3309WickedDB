@@ -14,7 +14,7 @@ wicked.get('/functionality1', (req, res) => {
   let conn = newConnection();
   conn.connect();
   let studentlist
-  conn.query(`select * from Student where fName=req.body.fname lName =req.body.lname;`, (err,rows,fields) => {
+  conn.query(`select * from Student where fName=${req.query.fname} lName=${req.query.lname};`, (err,rows,fields) => {
     if (err)
       res.send('ERROR: ' +err)
     else {
@@ -24,7 +24,7 @@ wicked.get('/functionality1', (req, res) => {
       for (item of studentlist)
       {
           content += '<div>'
-          content += (item.fName + " " + item.lName + " : " + item.studentAge + "years old" + " ; " + item.studentYear + " : " + item.studentAverage + " : " + creditsToDate + " : " + item.numberOfClasses + " : " + classroomNo + " : " + instructorNo) ;
+          content += (item.fName + " " + item.lName + " : " + item.studentAge + "years old" + " ; " + item.studentYear + " : " + item.studentAverage + "%" + " : " + creditsToDate + "credits to date. " + " : " + item.numberOfClasses + "number of classes" + " : " + "classroom " + classroomNo + " : " + "instructor" + instructorNo) ;
           content += '</div>'
           content += '\n';
           content += '\n';
@@ -93,7 +93,6 @@ wicked.get('/functionality3', (req, res) => {
 wicked.get('/functionality4', (req, res) => {
   let conn = newConnection();
   conn.connect();
-  let row;
   conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( NULL, ${req.query.studentFName}, ${req.query.studentLName}, ${req.query.studentAge}, ${req.query.studentYear}, ${req.query.studentCredits}, ${req.query.studentClasses},);` , (err,rows,fields) => {
 
     if (err) { 
