@@ -9,15 +9,9 @@ FROM Department as d , Instructor as i
 GROUP BY i.deptName;
 
 --given a student and a course find all students in the same section of that course with them
-SELECT s.fName, s.lName 
-FROM Enrollment e, Student s 
-
-WHERE e.sectionID= (
-    SELECT e.sectionID
-    FROM Enrollment e, Section s 
-    WHERE e.studentNo=//given AND S.courseID= //given
-    )
-  And e.studentNo = s.studentNo ;
+SELECT s.fName, s.lName FROM Enrollment e, Student s, Course c 
+  WHERE e.sectionID= (SELECT DISTINCT e.sectionID FROM Enrollment e, Section s, Course c, Student st
+    WHERE st.studentNo = e.studentNo AND s.sectionID = e.sectionID AND s.courseID = //given AND st.fName= //given AND st.lName=//given) AND e.studentNo = s.studentNo AND c.courseID = //given};
 
 --add a new student to the student relation
 INSERT INTO Student
