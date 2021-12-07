@@ -78,15 +78,27 @@ wicked.get('/functionality3', (req, res) => {
 
   conn.query(`SELECT s.fName, s.lName FROM Enrollment e, Student s 
   WHERE e.sectionID= (SELECT e.sectionID FROM Enrollment e, Section s 
-    WHERE '${req.query.studentnum}' given AND '${req.query.courseID}') And e.studentNo = s.studentNo ;`,
-                (err,rows,fields) => {
-                    if (err)
-                        console.log(err);
-                    else
-                        console.log('students found');
-                })
+  WHERE '${req.query.studentnum}' given AND '${req.query.courseID}') And e.studentNo = s.studentNo ;`,
+  (err,rows,fields) => {
+    if (err)
+      console.log(err);
+    else{
+      let studentsnamelist = rows;
+      let content = ' ';
+      for (x in studentsnamelist)
+      {
+        content += '<div>'
+        content += x.fName + ' ' + x.lName
+        content += '</div>'
+        content += '<br>'
+      }
+      content += '</div>';
+      content += `<a href= '/'>Quit</a>`;
+      res.send(content);
 
+    }
 
+    })
 
   conn.end();
 })
