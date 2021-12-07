@@ -44,8 +44,8 @@ wicked.get('/functionality1', (req, res) => {
 wicked.get('/functionality2', (req, res) => {
   let conn = newConnection();
   conn.connect();
-  conn.query(`SELECT d.deptName, a.adminNo, min(a.salary), i.instructorNo, min(i.salary) 
-  FROM Department as d Right JOIN AdminStaff as a  RIGHT JOIN Instructor as i
+  conn.query(`SELECT d.deptName, i.instructorNo, min(i.salary) 
+  FROM Department as d , Instructor as i
   GROUP BY d.deptName;`, (err,row,fields) => {
     if (err)
     res.send('ERROR: ' + err)
@@ -121,8 +121,8 @@ wicked.get('/functionality5', (req, res) => {
   conn.connect();
 
   conn.query(`UPDATE Instructor
-              SET salary = salary*`+req.query.raise+` 
-              WHERE deptName = `+req.query.dept+`;`,
+              SET salary = salary*1.`+req.query.raise+` 
+              WHERE deptName = '`+req.query.dept+`';`,
                 (err,rows,fields) => {
                     if (err)
                         console.log(err);
