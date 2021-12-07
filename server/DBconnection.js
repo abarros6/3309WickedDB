@@ -7,7 +7,8 @@ function newConnection()
         user: 'root',
         password:'',
         port: '3306',
-        multipleStatements: true
+        multipleStatements: true,
+        database: 'wicked'
     });
     return conn;
 }

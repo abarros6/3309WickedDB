@@ -46,12 +46,12 @@ wicked.get('/functionality2', (req, res) => {
   conn.connect();
   conn.query(`SELECT d.deptName, i.instructorNo, min(i.salary) 
   FROM Department as d , Instructor as i
-  GROUP BY d.deptName;`, (err,row,fields) => {
+  GROUP BY d.deptName;`, (err,rows,fields) => {
     if (err)
     res.send('ERROR: ' + err)
     else
     {
-      userList = rows;
+      let userList = rows;
       let content = '';
       for (u of userList)
       {
