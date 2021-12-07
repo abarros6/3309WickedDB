@@ -16,7 +16,7 @@ wicked.get('/functionality1', (req, res) => {
   let studentlist
   conn.query(`select * from Student where fName='${req.query.fname}' lName='${req.query.lname}';`, (err,rows,fields) => {
     if (err)
-      res.send('ERROR: ' +err)
+      res.send('ERROR: ' + err)
     else {
       studentlist = rows
       let content = '';
@@ -76,7 +76,9 @@ wicked.get('/functionality3', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
-  conn.query(``,
+  conn.query(`SELECT s.fName, s.lName FROM Enrollment e, Student s 
+  WHERE e.sectionID= (SELECT e.sectionID FROM Enrollment e, Section s 
+    WHERE '${req.query.studentnum}' given AND '${req.query.courseID}') And e.studentNo = s.studentNo ;`,
                 (err,rows,fields) => {
                     if (err)
                         console.log(err);
