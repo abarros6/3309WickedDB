@@ -76,16 +76,16 @@ wicked.get('/functionality3', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
-  conn.query(`SELECT s.fName, s.lName FROM Enrollment e, Student s 
-  WHERE e.sectionID= (SELECT e.sectionID FROM Enrollment e, Section s 
-  WHERE '${req.query.studentnum}' given AND '${req.query.courseID}') And e.studentNo = s.studentNo ;`,
+  conn.query(`SELECT s.fName, s.lName FROM Enrollment e, Student s, Course c 
+  WHERE e.sectionID= (SELECT DISTINCT e.sectionID FROM Enrollment e, Section s, Course c, Student st
+    WHERE st.studentNo = e.studentNo AND s.sectionID = e.sectionID AND s.courseID = ${req.query.courseID} AND st.fName='${req.query.fName}' AND st.lName='${req.query.lName}') AND e.studentNo = s.studentNo AND c.courseID = ${req.query.courseID};`,
   (err,rows,fields) => {
     if (err)
       console.log(err);
     else{
       let studentsnamelist = rows;
       let content = ' ';
-      for (x in studentsnamelist)
+      for (x of studentsnamelist)
       {
         content += '<div>'
         content += x.fName + ' ' + x.lName
