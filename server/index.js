@@ -60,7 +60,8 @@ wicked.get('/functionality2', (req, res) => {
         content += '</div>'
         content += '<br>'
       }
-
+      content += '</div>';
+      content += `<a href= '/'>Quit</a>`;
       res.send(content);
     }
 
