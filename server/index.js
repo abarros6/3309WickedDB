@@ -1,4 +1,4 @@
-//hello
+//hi there
 const express = require('express');
 const Connection = require('mysql2/typings/mysql/lib/Connection');
 const path = require('path');
@@ -75,7 +75,17 @@ wicked.get('/functionality3', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
+  conn.query(``,
+                (err,rows,fields) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        console.log('students found');
+                })
 
+
+
+  conn.end();
 })
 // -----
 
@@ -83,8 +93,26 @@ wicked.get('/functionality3', (req, res) => {
 wicked.get('/functionality4', (req, res) => {
   let conn = newConnection();
   conn.connect();
+  let row;
+  conn.query(`INSERT INTO Student (fName ,lName ,studentAge, studentYear ,creditsToDate ,numberOfClasses ) VALUES ( NULL, ${req.query.studentFName}, ${req.query.studentLName}, ${req.query.studentAge}, ${req.query.studentYear}, ${req.query.studentCredits}, ${req.query.studentClasses},);` , (err,rows,fields) => {
 
+    if (err) { 
 
+      res.send('ERROR: ' +err)
+
+    } else {
+
+      let content = '';
+
+      content += '<div>';
+        content += '<h3>Student '+ rows.studentFName + ' ' + rows.studentLName + 'is now enrolled!</h3>';
+      content += '</div>';
+
+      res.send(content);
+    }
+  })
+
+  conn.end();
 })
 // -----
 
@@ -93,7 +121,19 @@ wicked.get('/functionality5', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
+  conn.query(`UPDATE Instructor
+              SET salary = salary*`+req.query.raise+` 
+              WHERE deptName = `+req.query.dept+`;`,
+                (err,rows,fields) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        console.log('salaries updated');
+                }
+            )
 
+
+  conn.end();
 })
 // -----
 
@@ -102,12 +142,34 @@ wicked.get('/functionality6', (req, res) => {
   let conn = newConnection();
   conn.connect();
 
+  conn.query(`SELECT t.courseID, e.startTime, e.endTime
+  FROM Enrollment e, Student s, Section t
+  WHERE s.fName = ${req.query.studentFName} AND s.lName = ${req.query.studentLName} AND s.studentNo = e.studentNo AND e.sectionID = t.sectionID;` , (err,rows,fields) => {
 
+    if (err) { 
+
+      res.send('ERROR: ' +err)
+
+    } else {
+      let content = '<div>';
+
+      for (r in rows) {
+        content += '<div>';
+        content += 'Course Number: ' + r.courseID + ' Start Time: ' + r.startTime + ' Start Time: ' + r.endTime;
+        content += '</div>';
+        content += '\n';
+      }
+      content += '</div>';
+      res.send(content);
+    }
+  })
+  
+  conn.end();
 })
 // -----
 
 
-
+/*
 
 wicked.get('/timeDisplay', (req, res) => {
   let conn = newConnection();
@@ -168,6 +230,8 @@ wicked.get('/userDisplay', (req, res) => {
       }
   })    
 })
+
+*/
 
 wicked.use(express.urlencoded({
   extended: true
